@@ -1,0 +1,49 @@
+<div class="row">
+	<div class="col">
+		<h2>Intéractions</h2>
+	</div>
+</div>
+<div class="row">
+	<div class="col">
+		<div class="interaction-card card shadow-sm">
+			<div class="card-body">
+
+				<ul class="nav nav-pills mb-4" id="myTab" role="tablist">
+					{% for module in modules %}
+						{% set counterNav = ( counterNav | default(0) ) + 1 %}
+						<li class="nav-item" role="presentation">
+							<button class="nav-link{% if counterNav == 1 %} active{% endif %}" id="{{module.slug}}-tab" data-bs-toggle="tab" data-bs-target="#{{module.slug}}" type="button" role="tab" aria-controls="{{module.slug}}" aria-selected="true">
+								{% if module.slug == "sondages" %}
+									<img src="img/sondages.svg" alt="">
+								{% elseif module.slug == "questions-reponses" %}
+									<img src="img/questions-reponses.svg" alt="">
+								{% elseif module.slug == "jeux-concours" %}
+									<img src="img/jeux-concours.svg" alt="">
+								{% elseif module.slug == "feedback" %}
+									<img src="img/feedback.svg" alt="">
+								{% endif %}
+								<i class="fal fa-ellipsis-v mx-2"></i>
+								{{module}}
+							</button>
+						</li>
+					{% endfor %}
+				</ul>
+				<div class="tab-content py-3" id="myTabContent">
+					{% for module in modules %}
+						{% set counterTab = ( counterTab | default(0) ) + 1 %}
+						<div class="tab-pane fade{% if counterTab == 1 %} show active{% endif %}" id="{{module.slug}}" role="tabpanel" aria-labelledby="{{module.slug}}-tab">
+							{% if module.slug == "questions-reponses" %}
+								{% include "dashboard/_remote/interactions/questions-reponses.html.twig" %}
+							{% elseif module.slug == "sondages" %}
+								{% include "dashboard/_remote/interactions/sondages.html.twig" %}
+							{% elseif module.slug == "jeux-concours" %}
+								{% include "dashboard/_remote/interactions/jeux-concours.html.twig" %}
+							{% endif %}
+						</div>
+					{% endfor %}
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

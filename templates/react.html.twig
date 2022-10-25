@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}
+				{{ websiteData.websiteConfig.title }}
+				|
+				{{ websiteData.websiteConfig.tagline }}
+			{% endblock %}
+		</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<base href="/">
+		{% if websiteData.websiteConfig.logo %}
+			<link rel="icon" href="{{ vich_uploader_asset(websiteData.websiteConfig, 'logoFile') }}">
+		{% else %}
+			<link rel="icon" href="img/default/yourlogo.svg">
+		{% endif %}
+
+		<meta property="og:title" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:image" content=""/>
+		<meta property="og:image:secure_url" content=""/>
+		<meta property="og:image:type" content="jpg"/>
+		<meta property="og:image:width" content="800"/>
+		<meta property="og:image:height" content="600"/>
+		<meta property="og:image:alt" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}"/>
+		<meta property="og:url" content=""/>
+		<meta property="og:type" content="website">
+		<meta property="og:locale" content="fr_FRANCE">
+		<meta property="og:site_name" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		<meta name="description" content="{{ websiteData.websiteConfig.title }} | {{ websiteData.websiteConfig.tagline }}">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+			{{ encore_entry_script_tags('reactMain') }}
+		{% endblock %}
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		{{ websiteData.websiteConfig.googleAnalytics|raw }}
+	</head>
+	<body>
+		{% block body %}{% endblock %}
+	</body>
+</html>

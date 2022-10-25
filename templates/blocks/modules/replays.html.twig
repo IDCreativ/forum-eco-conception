@@ -1,0 +1,40 @@
+<section class="replays">
+    <div id="replays-container" class="container">
+    {% for event in events %}
+        {% if event.hasReplays %}
+            <div class="row">
+                <div class="col">
+                    <div class="h2-wrapper">
+                        <h2>
+                            {{ event }}
+                        </h2>
+                        <div class="after-h2"></div>
+                    </div>
+                </div>
+            </div>
+            {% for category in categories %}
+                {% if category.hasReplaysInThatEvent(event) %}
+                    <div class="row">
+                        <div class="col">
+                            <h3>
+                                {{ category }}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row replay-category">
+                        {% for video in category.videos %}
+                            {% if video.status == false and video.type != 1 and video.event == event %}
+                                    <div class="video-replay col-md-4 mb-4">
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            {{ video.embedCode|raw }}
+                                        </div>
+                                    </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>

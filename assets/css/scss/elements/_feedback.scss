@@ -1,0 +1,19 @@
+.stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-block: 1rem;
+    .star {
+        height: 1.5rem;
+        svg {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            fill: yellow;
+        }
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
