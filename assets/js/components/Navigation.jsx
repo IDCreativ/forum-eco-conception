@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Navigation = () => {
 	
 	const [generalConfiguration, setGeneralConfiguration] = useState([{}]);
+	const [logo, setLogo] = useState(undefined);
 
 	useEffect(() => {
 		const fetchConfiguration = async () => {
@@ -25,6 +26,12 @@ const Navigation = () => {
 		};
 		fetchConfiguration();
 	}, []);
+
+	useEffect(() => {
+		if (generalConfiguration.logo !== undefined) {
+			setLogo(generalConfiguration.logo);
+		}
+	}, [generalConfiguration]);
 
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -53,6 +60,8 @@ const Navigation = () => {
 		toast.info("Vous êtes désormais déconnecté.");
 	};
 
+	console.log('General Configuration', generalConfiguration);
+
 	return (
 		<header>
 			<div className="container">
@@ -60,11 +69,13 @@ const Navigation = () => {
 					<div className="col header-wrapper">
 						<div className="event-host">
 							<div className="logo-wrapper">
-								<img
-									className="custom-logo"
-									src={"uploads/logos/" + generalConfiguration.logo}
-									alt=""
-								/>
+								{logo !== undefined ? (
+									<img
+										className="custom-logo"
+										src={"uploads/logos/" + logo}
+										alt=""
+									/>
+								) : null}
 							</div>
 							<div className="separation">
 								<img src="img/separation-title.svg" alt="" />

@@ -80,7 +80,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $telephone;
 
     /**
-     * @ORM\OneToMany(targetEntity=PollVote::class, mappedBy="User")
+     * @ORM\OneToMany(targetEntity=PollVote::class, mappedBy="user")
      */
     private $pollVotes;
 

@@ -5,19 +5,25 @@ import generalConfigurationAPI from "../services/generalConfigurationAPI";
 const Footer = (props) => {
 
 	const [generalConfiguration, setGeneralConfiguration] = useState([{}]);
-
-	const fetchConfiguration = async () => {
-		try {
-			const dataConfig = await generalConfigurationAPI.findConfig();
-			setGeneralConfiguration(dataConfig);
-		} catch (error) {
-			console.log(error.response);
-		}
-	};
-
+	const [logo, setLogo] = useState(undefined);
+	
 	useEffect(() => {
+		const fetchConfiguration = async () => {
+			try {
+				const dataConfig = await generalConfigurationAPI.findConfig();
+				setGeneralConfiguration(dataConfig);
+			} catch (error) {
+				console.log(error.response);
+			}
+		};
 		fetchConfiguration();
 	}, []);
+
+	useEffect(() => {
+		if (generalConfiguration.logo !== undefined) {
+			setLogo(generalConfiguration.logo);
+		}
+	}, [generalConfiguration]);
 
 	return (
 		<>
@@ -63,11 +69,13 @@ const Footer = (props) => {
 					<div className="row">
 						<div className="col footer-wrapper">
 							<div className="brand-logo">
-								<img
-									className="custom-logo"
-									src={"uploads/logos/" + generalConfiguration.logo}
-									alt=""
-								/>
+								{logo !== undefined ? (
+									<img
+										className="custom-logo"
+										src={"uploads/logos/" + logo}
+										alt=""
+									/>
+								) : null}
 							</div>
 							<div className="copyright">
 								<div className="text">
