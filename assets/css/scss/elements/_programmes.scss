@@ -37,6 +37,7 @@
             font-size: 18px;
             line-height: 20px;
             font-weight: 600;
+            color: $bc-secondary;
         }
     }
     .chapter-main-wrapper {
@@ -103,12 +104,12 @@
                         h5 {
                             font-size: 16px;
                             line-height: 20px;
-                            color: $body-color;
+                            color: $bc-secondary;
                         }
                         p {
                             font-size: 14px;
                             margin: 0;
-                            color: $bc-primary;
+                            color: $body-color;
                         }
                     }
                 }
@@ -267,12 +268,10 @@
                             h5 {
                                 font-size: 16px;
                                 line-height: 20px;
-                                color: $body-color;
                             }
                             p {
                                 font-size: 14px;
                                 margin: 0;
-                                color: $bc-primary;
                             }
                         }
                     }

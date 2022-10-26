@@ -3,14 +3,25 @@ header {
 	position: relative;
 	width: 100%;
 	height: auto;
-	background: white;
 	border-bottom: 2px solid $bc-primary;
+	overflow: hidden;
+	.overlay-bubbles {
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to right, $color-2, $color-1);
+		img {
+			opacity: 0.1;
+		}
+	}
 	.header-wrapper {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		// height: $header-height;
 	}
 	nav {
 		display: flex;
@@ -31,16 +42,17 @@ header {
 				align-items: center;
 				height: 50px;
 				padding: 0 20px;
-				border-left: 1px solid $bc-secondary;
+				border-left: 1px solid white;
+				color: white;
 				&:last-child {
-					border-right: 0px solid $bc-secondary;
+					border-right: 0px solid white;
 				}
 				a {
-					color: $body-color;
+					color: white;
 					text-decoration: none;
 					transition: $transition;
 					&:hover {
-						color: $bc-primary;
+						color: $bc-secondary;
 						transition: $transition;
 					}
 				}
@@ -59,9 +71,13 @@ header {
 			justify-content: center;
 			align-items: center;
 			height: 100%;
-			padding: 0 50px 0 0;
+			max-width: 100%;
+			padding: 12px;
 			img {
 				height: 80px;
+				width: auto;
+				max-width: 100%;
+				object-fit: contain;
 			}
 		}
 		.host-infos {
@@ -70,17 +86,11 @@ header {
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
-			.site-title {
-				font-size: 35px;
-				line-height: 45px;
-				color: $bc-primary;
-				font-weight: bold;
-				text-align: left;
-			}
 			.site-subtitle {
 				font-size: 20px;
 				line-height: 27px;
 				font-weight: 400;
+				color: white;
 			}
 		}
 	}
@@ -90,10 +100,19 @@ header {
 		width: 100%;
 		.header-wrapper {
 			display: flex;
-			// flex-direction: row;
 			align-items: center;
 			justify-content: flex-start;
-			// height: $header-height;
+		}
+		.separation {
+			position: relative;
+			z-index: 0;
+			width: 5px;
+			height: 100%;
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
 		}
 		.event-host {
 			margin: 0 auto;
@@ -106,14 +125,16 @@ header {
 			.site-title {
 				text-align: left;
 			}
+			.logo-wrapper {
+				padding: 0 50px 0 0;
+			}
 			.host-infos {
-				margin: 0 0 0 30px;
+				margin: 0;
 				padding: 0 0 0 30px;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
 				align-items: flex-start;
-				border-left: 2px solid $bc-primary;
 				font-size: 24px;
 				line-height: 30px;
 				text-align: left;
@@ -133,8 +154,8 @@ header {
 		}
 		.event-host {
 			.host-infos {
-				margin: 0 0 0 70px;
-				padding: 0 0 0 70px;
+				margin: 0;
+				padding: 0 0 0 50px;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;

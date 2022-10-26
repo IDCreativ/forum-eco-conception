@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import generalConfigurationAPI from "../services/generalConfigurationAPI";
 
 const Footer = (props) => {
@@ -65,7 +65,7 @@ const Footer = (props) => {
 							<div className="brand-logo">
 								<img
 									className="custom-logo"
-									src="img/default/yourlogo.svg"
+									src={"uploads/logos/" + generalConfiguration.logo}
 									alt=""
 								/>
 							</div>
@@ -78,13 +78,13 @@ const Footer = (props) => {
 									/>
 								</div>
 								<div className="links">
-									<a to="#">Mentions légales</a>
+									<Link to="#">Mentions légales</Link>
 								</div>
 							</div>
 							<div className="development_by">
 								<span>Plateforme développée par </span>
 								<a
-									to="https://www.blue-com.fr/"
+									href="https://www.blue-com.fr/"
 									target="_blank"
 									title="Agence de communication éco-responsable"
 								>

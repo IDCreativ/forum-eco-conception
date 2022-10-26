@@ -16,6 +16,7 @@ class PartnersType extends AbstractType
     {
         $builder
             ->add('featured')
+            ->add('partnerType')
             ->add('name', TextType::class, [
                 'label'    => 'Nom',
             ])

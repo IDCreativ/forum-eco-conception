@@ -4,12 +4,14 @@ import Field from "../components/forms/Field";
 import Footer from "../layout/Footer";
 import UsersAPI from "../services/usersAPI";
 import { toast } from "react-toastify";
+import { Container } from "react-bootstrap";
 
 const RegisterPage = ({ history }) => {
 	const [user, setUser] = useState({
 		firstname: "",
 		lastname: "",
 		email: "",
+		telephone: "",
 		password: "",
 		passwordConfirm: "",
 	});
@@ -18,6 +20,7 @@ const RegisterPage = ({ history }) => {
 		firstname: "",
 		lastname: "",
 		email: "",
+		telephone: "",
 		password: "",
 		passwordConfirm: "",
 	});
@@ -64,9 +67,9 @@ const RegisterPage = ({ history }) => {
 	return (
 		<>
 			<div id="main-container" className="global-container py-5">
-				<main id="front">
+				<Container>
 					<div className="row">
-						<div className="col-lg-8 mx-auto">
+						<div className="col-md-8 col-lg-6 mx-auto">
 							<div className="card shadow-sm">
 								<div className="card-header">Inscription à l'application</div>
 								<div className="card-body">
@@ -95,7 +98,7 @@ const RegisterPage = ({ history }) => {
 											</div>
 										</div>
 										<div className="row">
-											<div className="col">
+											<div className="col-md-6">
 												<Field
 													name="email"
 													type="email"
@@ -104,6 +107,18 @@ const RegisterPage = ({ history }) => {
 													placeholder="Votre e-mail"
 													value={user.email}
 													error={errors.email}
+													onChange={handleChange}
+												/>
+											</div>
+											<div className="col-md-6">
+												<Field
+													name="telephone"
+													type="telephone"
+													// label="Votre téléphone"
+													icon="fa-mobile"
+													placeholder="Votre téléphone"
+													value={user.telephone}
+													error={errors.telephone}
 													onChange={handleChange}
 												/>
 											</div>
@@ -133,12 +148,14 @@ const RegisterPage = ({ history }) => {
 												/>
 											</div>
 										</div>
-										<button
-											type="submit"
-											className="btn btn-primary text-light"
-										>
-											S'enregistrer
-										</button>
+											<div className="d-grid col-12">
+												<button
+													type="submit"
+													className="btn btn-primary text-light"
+												>
+													S'enregistrer
+												</button>
+											</div>
 									</form>
 								</div>
 								<div className="card-footer">
@@ -149,7 +166,7 @@ const RegisterPage = ({ history }) => {
 							</div>
 						</div>
 					</div>
-				</main>
+				</Container>
 			</div>
 			<Footer />
 		</>

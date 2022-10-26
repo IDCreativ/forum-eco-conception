@@ -10,13 +10,26 @@ import { toast } from "react-toastify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navigation = () => {
+	
+	const [generalConfiguration, setGeneralConfiguration] = useState([{}]);
+
+	useEffect(() => {
+		const fetchConfiguration = async () => {
+			try {
+				const dataConfig = await generalConfigurationAPI.findConfig();
+				setGeneralConfiguration(dataConfig);
+				console.log("dataConfig", dataConfig);
+			} catch (error) {
+				console.log(error.response);
+			}
+		};
+		fetchConfiguration();
+	}, []);
 
 	const location = useLocation();
 	const navigate = useNavigate();
 
 	const [displayUser, setDisplayUser] = useState(null);
-
-	// const shouldRedirect = location.pathname !== "/login";
 
 	const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 	const { appUser, setAppUser } = useContext(UserContext);
@@ -26,22 +39,6 @@ const Navigation = () => {
 			setDisplayUser("Bienvenue " + appUser.firstname + " " + appUser.lastname.slice(0, 1) + ".");
 		}
 	}, [appUser]);
-	
-	const [generalConfiguration, setGeneralConfiguration] = useState([{}]);
-
-	const fetchConfiguration = async () => {
-		try {
-			const dataConfig = await generalConfigurationAPI.findConfig();
-			setGeneralConfiguration(dataConfig);
-			console.log("dataConfig", dataConfig);
-		} catch (error) {
-			console.log(error.response);
-		}
-	};
-
-	useEffect(() => {
-		fetchConfiguration();
-	}, []);
 
 	const handleLogout = () => {
 		AuthAPI.logout();
@@ -65,14 +62,17 @@ const Navigation = () => {
 							<div className="logo-wrapper">
 								<img
 									className="custom-logo"
-									src="img/default/yourlogo.svg"
+									src={"uploads/logos/" + generalConfiguration.logo}
 									alt=""
 								/>
 							</div>
+							<div className="separation">
+								<img src="img/separation-title.svg" alt="" />
+							</div>
 							<h1 className="host-infos">
-								<span className="site-title">{generalConfiguration.title}</span>
 								<span className="site-subtitle">
-									{generalConfiguration.tagline}
+									Les rencontres pour <strong>développer</strong><br />
+									une offre <strong>écologique</strong>
 								</span>
 							</h1>
 						</div>
@@ -129,6 +129,9 @@ const Navigation = () => {
 						</nav>
 					</div>
 				</div>
+			</div>
+			<div className="overlay-bubbles">
+				<img src="img/bground-bubbles.svg" alt="" />
 			</div>
 		</header>
 	);

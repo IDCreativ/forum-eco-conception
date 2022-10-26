@@ -65,6 +65,11 @@ class Partners
      */
     private $height;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=PartnerType::class, inversedBy="partner")
+     */
+    private $partnerType;
+
     public function __toString(){
         return (string) $this->name;
     }
@@ -136,6 +141,18 @@ class Partners
     public function setHeight(?int $height): self
     {
         $this->height = $height;
+
+        return $this;
+    }
+
+    public function getPartnerType(): ?PartnerType
+    {
+        return $this->partnerType;
+    }
+
+    public function setPartnerType(?PartnerType $partnerType): self
+    {
+        $this->partnerType = $partnerType;
 
         return $this;
     }

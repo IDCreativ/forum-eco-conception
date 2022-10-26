@@ -42,8 +42,7 @@
                                             <td>{{ page.name }}</td>
                                             <td>{{ page.slug }}</td>
                                             <td>
-												<button class="btn btn-outline-success m-1" data-bs-toggle="modal" data-bs-target="#descriptionModal-{{ page.id }}" {% if page.description is null %} disabled{% endif %}
-                                                 >
+												<button class="btn btn-outline-success m-1" data-bs-toggle="modal" data-bs-target="#descriptionModal-{{ page.id }}" {% if page.description is null %} disabled{% endif %}>
 													<i class="fal fa-search"></i>
 												</button>
 												<div class="modal fade" id="descriptionModal-{{ page.id }}" tabindex="-1" aria-labelledby="descriptionModal-{{ page.id }}-Label" aria-hidden="true">

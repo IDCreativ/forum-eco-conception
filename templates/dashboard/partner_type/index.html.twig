@@ -1,0 +1,57 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Types de partenaires - {{ parent() }}{% endblock %}
+
+{% block body %}
+    <div class="container">
+		<div class="row">
+			<div class="col d-flex justify-content-between mb-4">
+				<h1>Types de partenaires - Liste</h1>
+				<div class="">
+					<a class="btn btn-primary" href="{{ path('app_partner_type_new') }}">
+						<i class="fal fa-plus"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="card shadow-sm">
+					<div class="card-body">
+						{% if partner_types|length > 0 %}
+							<table id="table-partner-type" class="table table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Nom</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for partner_type in partner_types %}
+                                    <tr>
+                                        <td>{{ partner_type.id }}</td>
+                                        <td>{{ partner_type.name }}</td>
+                                        <td>
+                                            <a class="btn btn-outline-warning btn-action" href="{{ path('app_partner_type_edit', {'id': partner_type.id}) }}">
+													<i class="fal fa-pen fa-fw"></i>
+												</a>
+                                            {{ include('dashboard/partner_type/_delete_form.html.twig') }}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        {% else %}
+							<div class="alert alert-info text-center mb-0" role="alert">
+								Pas d'enregistrement pour le moment.
+							</div>
+						{% endif %}
+                    </div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

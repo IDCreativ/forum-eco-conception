@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import Footer from "../layout/Footer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Container } from "react-bootstrap";
 
 const LoginPage = ({ history }) => {
 	const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
@@ -50,7 +51,7 @@ const LoginPage = ({ history }) => {
 				id="main-container"
 				className="global-container py-5"
 			>
-				<main id="front">
+				<Container id="front">
 					<div className="row">
 						<div className="col-md-6 mx-auto">
 							{!isAuthenticated && (
@@ -78,12 +79,14 @@ const LoginPage = ({ history }) => {
 												value={credentials.password}
 												onChange={handleChange}
 											/>
-											<button
-												type="submit"
-												className="btn btn-primary text-light"
-											>
-												Connexion
-											</button>
+											<div className="d-grid col-12">
+												<button
+													type="submit"
+													className="btn btn-primary text-light"
+												>
+													Connexion
+												</button>
+											</div>
 										</form>
 									</div>
 
@@ -97,7 +100,7 @@ const LoginPage = ({ history }) => {
 							{isAuthenticated && <Navigate to="/" />}
 						</div>
 					</div>
-				</main>
+				</Container>
 			</div>
 			<Footer />
 		</>
