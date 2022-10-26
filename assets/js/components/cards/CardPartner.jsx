@@ -7,7 +7,7 @@ const CardPartner = ({
 	return (
 		<img
 			src={"uploads/partners/" + logo}
-			style={height && "max-height:" + height + "px"}
+			style={{maxHeight: height + "px"}}
 		/>
 	);
 };
