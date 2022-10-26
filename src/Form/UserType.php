@@ -26,7 +26,8 @@ class UserType extends AbstractType
                 'label' => 'E-mail'
             ])
             ->add('telephone', TextType::class, [
-                'label' => 'Téléphone'
+                'label' => 'Téléphone',
+                'required' => false
             ])
             ->add('roles', ChoiceType::class, [
                 'choices' => [
