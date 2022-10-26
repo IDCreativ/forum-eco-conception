@@ -2,11 +2,24 @@
 
 namespace App\Entity;
 
-use App\Repository\PollVoteRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PollVoteRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PollVoteRepository::class)
+ * @ApiResource(
+ *      attributes={"order"={"id": "DESC"}},
+ *      normalizationContext={
+ *          "groups"={
+ *              "read:pollvote",
+ *              "write:pollvote"
+ *          }
+ *      },
+ *      collectionOperations={"GET", "POST"},
+ *      itemOperations={"GET"}
+ * )
  */
 class PollVote
 {
@@ -14,24 +27,28 @@ class PollVote
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="pollVotes")
      * @ORM\JoinColumn(nullable=true)
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity=Poll::class, inversedBy="pollVotes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $poll;
 
     /**
      * @ORM\ManyToOne(targetEntity=PollOption::class, inversedBy="pollVotes")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $pollOption;
 

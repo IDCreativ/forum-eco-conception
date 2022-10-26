@@ -2,13 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\PollOptionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PollOptionRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PollOptionRepository::class)
+ * @ApiResource(
+ *      attributes={"order"={"id": "DESC"}},
+ *      normalizationContext={
+ *          "groups"={
+ *              "read:pollvote",
+ *              "write:pollvote"
+ *          }
+ *      },
+ *      collectionOperations={"GET", "POST"},
+ *      itemOperations={"GET"}
+ * )
  */
 class PollOption
 {
@@ -16,6 +29,7 @@ class PollOption
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $id;
 
@@ -26,6 +40,7 @@ class PollOption
 
     /**
      * @ORM\OneToMany(targetEntity=PollVote::class, mappedBy="pollOption")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $pollVotes;
 
