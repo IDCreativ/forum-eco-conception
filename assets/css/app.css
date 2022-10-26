@@ -12409,7 +12409,8 @@ section#partenaires {
 section#partenaires .partenaires {
   min-height: 60px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: row-reverse;
+  justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
 }
