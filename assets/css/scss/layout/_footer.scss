@@ -64,11 +64,12 @@ footer {
 			height: 100%;
 			width: 100%;
 			object-fit: contain;
+			filter: invert(100%) invert(19%) sepia(84%) saturate(3095%) hue-rotate(194deg) brightness(87%) contrast(101%);
 		}
 	}
 	.copyright {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		justify-content: flex-start;
 		align-items: center;
 		.text {

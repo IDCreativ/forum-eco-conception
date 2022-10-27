@@ -2,12 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\PageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PageRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PageRepository::class)
+ * @ApiResource(
+ *    normalizationContext={"groups"={"read:page"}},
+ *    collectionOperations={"get"},
+ *    itemOperations={"get"}
+ * )
  */
 class Page
 {
@@ -15,27 +22,32 @@ class Page
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:page"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:page"})
      */
     private $name;
 
     /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:page"})
      */
     private $slug;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"read:page"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups({"read:page"})
      */
     private $content;
 
@@ -44,11 +56,13 @@ class Page
      *
      * @Gedmo\Timestampable(on="update")
      * @ORM\Column(type="datetime")
+     * @Groups({"read:page"})
      */
     private $editedAt;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"read:page"})
      */
     private $status;
 

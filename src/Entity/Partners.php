@@ -13,6 +13,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass=PartnersRepository::class)
  * @Vich\Uploadable
  * @ApiResource(
+ *    attributes={"order"={"id": "ASC"}},
  *    normalizationContext={"groups"={"read:partner"}},
  *    collectionOperations={"get"},
  *    itemOperations={"get"}

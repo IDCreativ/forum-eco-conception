@@ -7,7 +7,7 @@ api_platform:
         versions: [3]
     show_webby: false
     collection:
-        order: 'DESC'
+        order: 'ASC'
         pagination: 
             enabled: false
             items_per_page: 5
