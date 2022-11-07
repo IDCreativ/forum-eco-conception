@@ -163,37 +163,35 @@ const Questions = () => {
                     />
                 ))}
             </ScrollToBottom>
-            {/* {isAuthenticated && ( */}
-                <div className="ask-question">
-                    <div className="qa-form">
-                        <form
-                            className="form-inline"
-                            onSubmit={handleSubmit}
-                        >
-                            <fieldset id="fieldset-qr">
-                                <div className="input-group">
-                                    <MessageField
-                                        id="js-message"
-                                        placeholder="Aa"
-                                        value={myMessage.question}
-                                        onChange={handleChange}
-                                        error={error}
-                                        className={"form-control" + (error && " is-invalid")}
-                                    />
-                                    <button
-                                        id="js-send-question"
-                                        className="btn send-question"
-                                        type="submit"
-                                    >
-                                        <span>Envoyer</span>
-                                        <i className="fal fa-arrow-right"></i>
-                                    </button>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
+            <div className="ask-question">
+                <div className="qa-form">
+                    <form
+                        className="form-inline"
+                        onSubmit={handleSubmit}
+                    >
+                        <fieldset id="fieldset-qr">
+                            <div className="input-group">
+                                <MessageField
+                                    id="js-message"
+                                    placeholder="Aa"
+                                    value={myMessage.question}
+                                    onChange={handleChange}
+                                    error={error}
+                                    className={"form-control" + (error && " is-invalid")}
+                                />
+                                <button
+                                    id="js-send-question"
+                                    className="btn send-question"
+                                    type="submit"
+                                >
+                                    <span>Envoyer</span>
+                                    <i className="fal fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </fieldset>
+                    </form>
                 </div>
-            {/* )} */}
+            </div>
         </>
     );
 }

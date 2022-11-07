@@ -38,6 +38,8 @@
 								{% include "dashboard/_remote/interactions/sondages.html.twig" %}
 							{% elseif module.slug == "jeux-concours" %}
 								{% include "dashboard/_remote/interactions/jeux-concours.html.twig" %}
+							{% elseif module.slug == "feedback" %}
+								{% include "dashboard/_remote/interactions/feedback-wrapper.html.twig" %}
 							{% endif %}
 						</div>
 					{% endfor %}

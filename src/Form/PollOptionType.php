@@ -7,6 +7,7 @@ use App\Entity\PollOption;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -18,6 +19,14 @@ class PollOptionType extends AbstractType
             ->add('poll', EntityType::class, [
                 'class' => Poll::class,
                 'label' => 'Sondage',
+                'required' => true
+            ])
+            ->add('type', ChoiceType::class, [
+                'label' => 'Type',
+                'choices' => [
+                    'Case à cocher' => 0,
+                    'Champ libre' => 1
+                ],
                 'required' => true
             ])
             ->add('description', TextType::class, [

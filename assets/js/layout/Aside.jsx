@@ -9,7 +9,7 @@ import Feedbacks from "../layout/blocks/Feedbacks";
 
 
 import changeStatus from "../services/ws/changeStatus";
-import elementsInteractions from "../services/ws/elementsInteractions";
+// import elementsInteractions from "../services/ws/elementsInteractions";
 
 const Aside = () => {
 
@@ -41,12 +41,6 @@ const Aside = () => {
 		socket.on('moduleStatus', changeStatus.moduleStatus);
 		console.log("On modifie le statut du module");
 	}, []);
-
-	// WS Elements
-	
-	socket.on('pollVisibility', elementsInteractions.changePollVisibility);
-	socket.on('pollResults', elementsInteractions.showPollResults);
-	socket.on('pollStatus', changeStatus.pollStatus);
 
 	return (
 		<>

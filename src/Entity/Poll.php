@@ -35,16 +35,19 @@ class Poll
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $question;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $visibility;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $status;
 

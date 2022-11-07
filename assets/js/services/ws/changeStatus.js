@@ -47,35 +47,6 @@ const moduleStatus = function (status) {
 	}
 };
 
-const questionStatus = function(status) {
-    var statusReceived = JSON.parse(status);
-    console.log('changeStatus', status);
-    var questionToUpdate = document.getElementById("question-"+statusReceived.questionId);
-    if (questionToUpdate) {
-        if (statusReceived.questionStatus == true) {
-            questionToUpdate.style.display = "block";
-        }
-        else {
-            questionToUpdate.style.display = "none";
-        }
-    }
-}
-
-function setQuestionStatus(id) {
-	const url = QUESTION_STATUS_API + "/" + id;
-	axios.post(url, {}).then(
-		(response) => {
-			var questionStatusInfos = JSON.stringify({
-				questionId: response.data.id,
-				questionStatus: response.data.status,
-			});
-		},
-		(error) => {
-			console.log(error);
-		}
-	);
-}
-
 const videoStatus = function(videoStatus) {
     console.log('changeVideoStatus');
     var videoStatusReceived = JSON.parse(videoStatus);
@@ -181,8 +152,6 @@ const pollStatus = function(pollStatus) {
 
 export default {
     moduleStatus: moduleStatus,
-    questionStatus: questionStatus,
-    setQuestionStatus,
     videoStatus: videoStatus,
     eventStatus: eventStatus,
     pollStatus: pollStatus

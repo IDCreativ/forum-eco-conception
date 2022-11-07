@@ -1,11 +1,15 @@
 <div id="js-questions-bo" class="row">
 	{% for question in questions %}
 		<div class="col-md-6 mb-4 question-card" id="question-card-{{ question.id }}">
-			<div class="card shadow-sm" id="card-{{ question.user.id }}">
+			<div class="card shadow-sm" id="card-{{ question.id }}">
 				<div class="card-header d-flex">
-					<span class="me-auto">{{ question.user.firstname }}
-						{{ question.user.lastname }}<br>{{ question.user.email }}</span>
-
+					<span class="me-auto">
+					{% if question.user %}
+						{{ question.user.firstname }} {{ question.user.lastname }}<br>{{ question.user.email }}
+					{% else %}
+						Anonyme
+					{% endif %}
+					</span>
 					<a class="js-status">
 						<span class="js-question-status">
 							<div class="form-check form-switch">

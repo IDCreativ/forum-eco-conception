@@ -38,7 +38,6 @@
                                     <td>{{ poll.status == true ? "Actif" : "Inactif" }}</td>
                                     <td>
                                         <a class="btn btn-outline-success btn-action" data-bs-toggle="modal" data-bs-target="#showPollId_{{ poll.id }}"><i class="fal fa-eye fa-fw"></i></a>
-                                        {# <a href="{{ path('poll_show', {'id': poll.id}) }}"><button class="btn btn-outline-success btn-action"><i class="fal fa-eye fa-fw"></i></button></a> #}
                                         <a href="{{ path('poll_edit', {'id': poll.id}) }}"><button class="btn btn-outline-warning btn-action"><i class="fal fa-pen-square fa-fw"></i></button></a>
                                         {{ include('dashboard/poll/_delete_form.html.twig') }}
                                     </td>
@@ -92,7 +91,14 @@
                 <div class="col">
                 <h4 class="text-reset text-left">Résultats</h4>
                     {% for resultat in poll.pollVotes %}
-                        <div class="">{{ resultat.user.firstname }} {{ resultat.user.lastname }} - {{ resultat.pollOption.description }}</div>
+                        <div class="">
+                        {% if resultat.user %}
+                            {{ resultat.user.firstname }} {{ resultat.user.lastname }}<br>
+                        {% else %}
+                            Anonyme<br>
+                        {% endif %}
+                            {{ resultat.pollOption.type == 0 ? resultat.pollOption.description : resultat.freeField }}
+                        </div>
                     {% endfor %}
                 </div>
             </div>

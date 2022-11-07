@@ -34,13 +34,19 @@ class PollOption
     private $id;
 
     /**
+     * @ORM\Column(type="integer")
+     * @Groups({"read:pollvote", "write:pollvote"})
+     */
+    private $type;
+
+    /**
      * @ORM\Column(type="text")
+     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $description;
 
     /**
      * @ORM\OneToMany(targetEntity=PollVote::class, mappedBy="pollOption")
-     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $pollVotes;
 
@@ -62,6 +68,18 @@ class PollOption
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function getType(): ?int
+    {
+        return $this->type;
+    }
+
+    public function setType(int $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 
     public function getDescription(): ?string

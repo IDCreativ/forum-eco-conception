@@ -41,7 +41,6 @@ class PollVote
     /**
      * @ORM\ManyToOne(targetEntity=Poll::class, inversedBy="pollVotes")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $poll;
 
@@ -51,6 +50,12 @@ class PollVote
      * @Groups({"read:pollvote", "write:pollvote"})
      */
     private $pollOption;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups({"read:pollvote", "write:pollvote"})
+     */
+    private $freeField;
 
     public function __toString(){
         return (string) $this->user." - ".$this->pollOption;
@@ -93,6 +98,18 @@ class PollVote
     public function setPollOption(?PollOption $pollOption): self
     {
         $this->pollOption = $pollOption;
+
+        return $this;
+    }
+
+    public function getFreeField(): ?string
+    {
+        return $this->freeField;
+    }
+
+    public function setFreeField(?string $freeField): self
+    {
+        $this->freeField = $freeField;
 
         return $this;
     }

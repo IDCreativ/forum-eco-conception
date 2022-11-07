@@ -11,6 +11,9 @@ export const CHAPTERS_API = API_URL + "/chapters";
 export const PARTNERS_API = API_URL + "/partners";
 export const PARTNER_TYPES_API = API_URL + "/partner_types";
 export const FEEDBACKS_API = API_URL + "/feedback";
+export const SONDAGES_API = API_URL + "/polls";
+export const VOTE_API = API_URL + "/poll_votes";
+
 
 export const USER_CONNECTED = SITE_URL + "/me";
 

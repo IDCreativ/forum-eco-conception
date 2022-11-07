@@ -5,7 +5,6 @@ import Partners from "../layout/blocks/Partners";
 import Aside from "../layout/Aside";
 import Footer from "../layout/Footer";
 
-import changeStatus from "../services/ws/changeStatus";
 import io from "socket.io-client"; 
 
 const HomePage = () => {
@@ -47,10 +46,6 @@ const HomePage = () => {
 			setAsideOpened(true);
 		}
 	};
-
-	// WS changeStatus
-	socket.on('change eventStatus', changeStatus.eventStatus);
-	socket.on('change videoStatus', changeStatus.videoStatus);
 
 	return (
 		<>

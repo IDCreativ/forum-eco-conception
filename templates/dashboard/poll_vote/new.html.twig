@@ -1,11 +1,31 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}New PollVote{% endblock %}
+{% block title %}Créer un vote - {{ parent() }}{% endblock %}
 
 {% block body %}
-    <h1>Create new PollVote</h1>
-
-    {{ include('dashboard/poll_vote/_form.html.twig') }}
-
-    <a href="{{ path('poll_vote_index') }}">back to list</a>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Créer un vote</h1>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    {{ include('dashboard/poll_vote/_form.html.twig', {'button_label': 'Créer'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col">
+            <a href="{{ path('poll_vote_index') }}"><i class="fal fa-long-arrow-left me-1"></i>Retour</a>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -14,7 +14,13 @@ class PollType extends AbstractType
     {
         $builder
             ->add('question')
-            ->add('visibility')
+            ->add('visibility', ChoiceType::class, [
+                'label' => 'Visibilité',
+                'choices'  => [
+                    'Visible' => true,
+                    'Non visible' => false,
+                ]
+            ])
             ->add('status', ChoiceType::class, [
                 'label' => 'État',
                 'choices'  => [
