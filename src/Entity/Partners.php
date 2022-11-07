@@ -68,6 +68,7 @@ class Partners
 
     /**
      * @ORM\ManyToOne(targetEntity=PartnerType::class, inversedBy="partner")
+     * @Groups({"read:partner"})
      */
     private $partnerType;
 

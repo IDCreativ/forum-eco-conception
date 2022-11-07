@@ -1,31 +1,77 @@
-
 section {
-    &#partenaires {
-        border-bottom: 1px solid $border-color;
-        .partenaires {
-            min-height: 60px;
-            display: flex;
-            justify-content: space-evenly;
-            align-items: center;
-            flex-wrap: wrap;
-            img {
-                width: auto;
-                max-height: 40px;
-                object-fit: contain;
-                padding: 5px;
-            }
-        }
-    }
+	&#partenaires {
+        display: flex;
+        flex-direction: column;
+        padding-inline: .75rem;
+		border-bottom: 1px solid $border-color;
+		.partenaires-row {
+			position: relative;
+			display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+			align-items: flex-start;
+			flex-wrap: wrap;
+            width: 100%;
+            padding: 10px 0;
+			.partenaires-row-title {
+				text-align: left;
+				p {
+					margin: 0;
+				}
+			}
+			.partenaires {
+				min-height: 60px;
+				width: calc(100% - 70px);
+                // padding: 0 20px 0 5px;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				img {
+					width: auto;
+					max-height: 40px;
+					object-fit: contain;
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 768px) {
+	section {
+		&#partenaires {
+            flex-direction: row;
+			.partenaires-row {
+                width: 50%;
+				.partenaires {
+                    // padding: 0 50px 0 20px;
+				}
+			}
+		}
+	}
 }
 @media screen and (min-width: 992px) {
-    section {
-        &#partenaires {
-            .partenaires {
-                min-height: 70px;
-                img {
-                    max-height: 40px;
-                }
-            }
-        }
-    }
+	section {
+		&#partenaires {
+			.partenaires-row {
+				.partenaires {
+                    // padding: 0 30px 0 10px;
+					min-height: 70px;
+					img {
+						max-height: 40px;
+					}
+				}
+			}
+		}
+	}
+}
+@media screen and (min-width: 1200px) {
+	section {
+		&#partenaires {
+			.partenaires-row {
+				.partenaires {
+                    // padding: 0 50px 0 20px;
+				}
+			}
+		}
+	}
 }

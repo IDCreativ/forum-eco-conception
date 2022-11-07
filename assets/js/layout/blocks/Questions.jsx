@@ -163,7 +163,7 @@ const Questions = () => {
                     />
                 ))}
             </ScrollToBottom>
-            {isAuthenticated && (
+            {/* {isAuthenticated && ( */}
                 <div className="ask-question">
                     <div className="qa-form">
                         <form
@@ -193,7 +193,7 @@ const Questions = () => {
                         </form>
                     </div>
                 </div>
-            )}
+            {/* )} */}
         </>
     );
 }

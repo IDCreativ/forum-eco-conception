@@ -22,7 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('mainJS', './assets/js/main.js')
-    .addEntry('mainWS', './assets/js/main-websocket.js')
+    // .addEntry('mainWS', './assets/js/main-websocket.js')
     .addEntry('dashboard', './assets/app-dashboard.js')
     .addEntry('dashboardWS', './assets/js/dashboard-websocket.js')
 

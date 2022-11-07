@@ -11,7 +11,7 @@ import io from "socket.io-client";
 const HomePage = () => {
 
 	// Websocket
-	const socket = io("https://ws-digitalevents.blue-com.fr", {
+	const socket = io("http://localhost:4000", {
 		withCredentials: false,
 		transportationOptions: {
 			polling: {

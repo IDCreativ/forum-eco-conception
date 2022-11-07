@@ -2,13 +2,21 @@
 
 namespace App\Entity;
 
-use App\Repository\PartnerTypeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PartnerTypeRepository;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=PartnerTypeRepository::class)
+ * @ApiResource(
+ *    attributes={"order"={"id": "ASC"}},
+ *    normalizationContext={"groups"={"read:partner"}},
+ *    collectionOperations={"get"},
+ *    itemOperations={"get"}
+ * )
  */
 class PartnerType
 {
@@ -16,11 +24,13 @@ class PartnerType
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"read:partner"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"read:partner"})
      */
     private $name;
 
@@ -28,6 +38,18 @@ class PartnerType
      * @ORM\OneToMany(targetEntity=Partners::class, mappedBy="partnerType")
      */
     private $partner;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Groups({"read:partner"})
+     */
+    private $description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"read:partner"})
+     */
+    private $slug;
 
     public function __toString()
     {
@@ -82,6 +104,30 @@ class PartnerType
                 $partner->setPartnerType(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

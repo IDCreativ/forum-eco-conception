@@ -49,17 +49,8 @@ footer {
 			}
 		}
 	}
-	.footer-wrapper {
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-direction: column;
-		height: auto;
-		padding: 30px 15px;
-	}
 	.brand-logo {
-		height: 60px;
+		height: 40px;
 		img {
 			height: 100%;
 			width: 100%;
@@ -164,11 +155,6 @@ footer {
 				color: $bc-primary;
 			}
 		}
-		.footer-wrapper {
-			flex-direction: row;
-			height: 100px;
-			padding: 0 15px;
-		}
 		.copyright {
 			position: absolute;
 			left: 50%;
@@ -192,5 +178,24 @@ footer {
                 }
             }
 		}
+	}
+}
+
+
+.footer-wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: column;
+	height: auto;
+	padding: 30px 15px;
+}
+
+@media screen and (min-width: 992px) {
+	.footer-wrapper {
+		flex-direction: row;
+		height: 100px;
+		padding: 0 15px;
 	}
 }
