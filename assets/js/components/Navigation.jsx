@@ -19,7 +19,7 @@ const Navigation = () => {
 			try {
 				const dataConfig = await generalConfigurationAPI.findConfig();
 				setGeneralConfiguration(dataConfig);
-				console.log("dataConfig", dataConfig);
+				// console.log("dataConfig", dataConfig);
 			} catch (error) {
 				console.log(error.response);
 			}
@@ -60,7 +60,7 @@ const Navigation = () => {
 		toast.info("Vous êtes désormais déconnecté.");
 	};
 
-	console.log('General Configuration', generalConfiguration);
+	// console.log('General Configuration', generalConfiguration);
 
 	return (
 		<header>

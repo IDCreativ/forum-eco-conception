@@ -42,26 +42,34 @@ const Sondages = (props) => {
 
     useEffect(() => {
         fetchSondages();
+        socket.on("pollSent", () => {
+            console.log("Nouveau vote");
+            fetchSondages();
+        });
     }, []);
 
     useEffect(() => {
-        setFilteredSondages(sondages.filter(sondage => sondage.status === true));
+        setFilteredSondages(sondages.filter(sondage => sondage.status === true && sondage.visibility === true));
     }, [sondages]);
-
-    console.log("All : ", sondages);
-    console.log("filtered : ", filteredSondages);
 
     return (
         <>
-            {filteredSondages.map(sondage => (
+            <div className="poll introduction">
+                <p>Bonjour et bienvenue au Forum de l'Éco Conception. 
+                Afin de calculer le bilan carbone de l'événement, veuillez s'il vous plaît, répondre à ces quelques questions.
+                </p>
+            </div>
+            {filteredSondages.map(sondage => 
                 <CardSondage
                     key={sondage.id}
+                    display={window.localStorage.getItem("myVoteToken-" + sondage.id)}
                     sondage={sondage}
                     isLoading={isLoading}
                     allClasses={""}
                     socket={socket}
+                    totalVotes={sondage.pollVotes.length}
                 />
-            ))}
+            )}
         </>
     );
 }

@@ -12,7 +12,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass=PollRepository::class)
  * @ApiResource(
- *      attributes={"order"={"id": "DESC"}},
+ *      attributes={"order"={"id": "ASC"}},
  *      normalizationContext={
  *          "groups"={
  *              "read:pollvote",

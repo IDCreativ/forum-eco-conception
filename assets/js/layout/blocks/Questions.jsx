@@ -143,9 +143,9 @@ const Questions = () => {
         }
     }, [questions, appUser, isAuthenticated]);
 
-    console.log("AppUser : ", appUser);
-    console.log('isAuthenticated : ', isAuthenticated);
-    console.log('isAdmin : ', appUser.roles.includes("ROLE_ADMIN") && isAuthenticated);
+    // console.log("AppUser : ", appUser);
+    // console.log('isAuthenticated : ', isAuthenticated);
+    // console.log('isAdmin : ', appUser.roles.includes("ROLE_ADMIN") && isAuthenticated);
 
     return (
         <>

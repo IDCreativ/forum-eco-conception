@@ -14,7 +14,7 @@ function find(id) {
 }
 
 function sendVote(myVote) {
-	return axios.post(SONDVOTE_APIAGES_API, {
+	return axios.post(VOTE_API, {
 		...myVote,
 		user: `/api/users/${myVote.user}`
 	})
