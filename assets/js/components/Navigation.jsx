@@ -111,11 +111,6 @@ const Navigation = () => {
 												/>
 											</NavLink>
 										</li>
-										<li>
-											<NavLink to="/register" className="btn btn-secondary text-light btn-sm">
-												<i className="fal fa-user-plus"></i>
-											</NavLink>
-										</li>
 									</>
 								)) || (
 									<>
