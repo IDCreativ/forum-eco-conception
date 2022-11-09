@@ -3,7 +3,7 @@ import io from "socket.io-client";
 
 // Connexion au Websocket
 console.log("webSocket Back Office loaded from TWIG");
-const socket = io("http://localhost:4000", {
+const socket = io("https://ws.forum-eco-conception.fr", {
 	withCredentials: false,
 	transportationOptions: {
 		polling: {
