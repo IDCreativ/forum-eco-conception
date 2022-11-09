@@ -24,6 +24,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Nom</th>
+                                    <th>Date</th>
                                     <th>Événement</th>
                                     <th>Actions</th>
                                 </tr>
@@ -33,6 +34,7 @@
                                 <tr>
                                     <td>{{ chapter.id }}</td>
                                     <td>{{ chapter.name }}</td>
+                                    <td>{{ chapter.dateStart|date('d/m/Y h:i') }}</td>
                                     <td>{{ chapter.event }}</td>
                                     <td>
                                         {# <a class="btn btn-outline-success btn-action" href="{{ path('chapter_show', {'id': chapter.id}) }}"><i class="fal fa-eye fa-fw"></i></a> #}

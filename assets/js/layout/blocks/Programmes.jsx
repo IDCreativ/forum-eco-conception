@@ -22,7 +22,7 @@ const Programmes = (props) => {
 	}, []);
 
 	moment.locale('fr');
-	const formatDate = (str) => moment.utc(str).format("H:mm");
+	const formatDate = (str) => moment(str).format("H:mm");
 
 	return (
 		<>
