@@ -89,12 +89,6 @@ const LoginPage = ({ history }) => {
 											</div>
 										</form>
 									</div>
-
-									<div className="card-footer">
-										<Link to="/register">
-											<i className="fal fa-long-arrow-left me-1"></i>S'enregistrer
-										</Link>
-									</div>
 								</div>
 							)}
 							{isAuthenticated && <Navigate to="/" />}
