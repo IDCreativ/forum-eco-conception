@@ -14,7 +14,7 @@ import changeStatus from "../services/ws/changeStatus";
 const Aside = () => {
 
 	// Websocket
-	const socket = io("http://localhost:4000", {
+	const socket = io("https://ws.forum-eco-conception.fr", {
 		withCredentials: false,
 		transportationOptions: {
 			polling: {

@@ -10,7 +10,7 @@ import CardSondage from '../../components/cards/CardSondage';
 const Sondages = (props) => {
 
     // Websocket
-	const socket = io("http://localhost:4000", {
+	const socket = io("https://ws.forum-eco-conception.fr", {
 		withCredentials: false,
 		transportationOptions: {
 			polling: {

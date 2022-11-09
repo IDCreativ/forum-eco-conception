@@ -8,7 +8,7 @@ import jwtDecode from "jwt-decode";
 import Navigation from "./components/Navigation";
 
 // Import des pages
-import HomePage from "./pages/Homepage";
+import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 

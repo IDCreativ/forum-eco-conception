@@ -1,4 +1,4 @@
-export const SITE_URL = "https://localhost:8000";
+export const SITE_URL = "https://www.forum-eco-conception.fr";
 
 export const API_URL = SITE_URL + "/api";
 
