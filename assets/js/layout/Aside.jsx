@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { io } from "socket.io-client";
 import generalConfigurationAPI from "../services/generalConfigurationAPI";
 import Programmes from "../layout/blocks/Programmes";
 import Questions from "../layout/blocks/Questions";
@@ -11,19 +10,7 @@ import Feedbacks from "../layout/blocks/Feedbacks";
 import changeStatus from "../services/ws/changeStatus";
 // import elementsInteractions from "../services/ws/elementsInteractions";
 
-const Aside = () => {
-
-	// Websocket
-	const socket = io("https://ws.forum-eco-conception.fr", {
-		withCredentials: false,
-		transportationOptions: {
-			polling: {
-				extraHeaders: {
-					"my-custom-header": "abcd",
-				},
-			},
-		},
-	});
+const Aside = ({socket}) => {
 
 	const [modules, setModules] = useState([]);
 
@@ -103,9 +90,9 @@ const Aside = () => {
 						>
 							<div className={"tab-content-wrapper-" + module.slug}>
 								{module.slug === "sondages" && (
-									<Sondages />
+									<Sondages socket={socket} />
 								) || module.slug === "questions-reponses" && (
-									<Questions />
+									<Questions socket={socket} />
 								) || module.slug === "feedback" && (
 									<Feedbacks />
 								)}

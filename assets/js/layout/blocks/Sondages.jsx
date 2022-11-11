@@ -7,19 +7,7 @@ import { UserContext } from '../../contexts/UserContext';
 import { io } from 'socket.io-client';
 import CardSondage from '../../components/cards/CardSondage';
 
-const Sondages = (props) => {
-
-    // Websocket
-	const socket = io("https://ws.forum-eco-conception.fr", {
-		withCredentials: false,
-		transportationOptions: {
-			polling: {
-				extraHeaders: {
-					"my-custom-header": "abcd",
-				},
-			},
-		},
-	});
+const Sondages = ({socket}) => {
 
     const { appUser, setAppUser } = useContext(UserContext);
 	const { isAuthenticated } = useContext(AuthContext);

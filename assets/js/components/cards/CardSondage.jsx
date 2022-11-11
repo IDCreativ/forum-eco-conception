@@ -47,6 +47,7 @@ function CardSondage({ sondage, socket, totalVotes, display }) {
 				const data = await sondagesAPI.sendVote(myVote);
 				sendVote(data);
 				console.log("Utilisateur connecté : ", data);
+				createPollToken(myVote);
 			} else {
 				const data = await sondagesAPI.sendAnonymousVote(myVote);
 				sendVote(data);

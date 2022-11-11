@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import AuthAPI from "./services/authAPI";
 import AuthContext from "./contexts/AuthContext";
 import jwtDecode from "jwt-decode";
+import io from "socket.io-client"; 
 
 // Import des components
 import Navigation from "./components/Navigation";
@@ -33,6 +34,18 @@ library.add(fab, fas, fal, fad, far);
 AuthAPI.setUp();
 
 const App = () => {
+
+    // Websocket
+	const socket = io("https://ws.forum-eco-conception.fr", {
+		withCredentials: false,
+		transportationOptions: {
+			polling: {
+				extraHeaders: {
+					"my-custom-header": "abcd",
+				},
+			},
+		},
+	});
 
     const token = window.localStorage.getItem("authToken");
 
@@ -91,7 +104,7 @@ const App = () => {
                     <Routes location={location} key={location.pathname}>
                         <Route path="/login" element={<LoginPage />} />
                         <Route path="/register" element={<RegisterPage />} />
-                        <Route path="/" element={<HomePage />} />
+                        <Route path="/" element={<HomePage socket={socket} />} />
                     </Routes>
                 </AnimatePresence>
                 <ToastContainer

@@ -5,21 +5,7 @@ import Partners from "../layout/blocks/Partners";
 import Aside from "../layout/Aside";
 import Footer from "../layout/Footer";
 
-import io from "socket.io-client"; 
-
-const HomePage = () => {
-
-	// Websocket
-	const socket = io("https://ws.forum-eco-conception.fr", {
-		withCredentials: false,
-		transportationOptions: {
-			polling: {
-				extraHeaders: {
-					"my-custom-header": "abcd",
-				},
-			},
-		},
-	});
+const HomePage = ({socket}) => {
 
 	const [asideOpened, setAsideOpened] = useState(true);
 
@@ -71,7 +57,7 @@ const HomePage = () => {
 				>
 					<i className="far fa-arrow-from-right"></i>
 				</div>
-				<Aside />
+				<Aside socket={socket} />
 			</aside>
 		</>
 	);

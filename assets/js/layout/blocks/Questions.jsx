@@ -9,21 +9,7 @@ import CardMessage from '../../components/cards/CardMessage';
 import MessageField from '../../components/forms/MessageField';
 import ScrollToBottom from 'react-scroll-to-bottom';
 
-import { io } from 'socket.io-client';
-
-const Questions = () => {
-
-    // Websocket
-	const socket = io("https://ws.forum-eco-conception.fr", {
-		withCredentials: false,
-		transportationOptions: {
-			polling: {
-				extraHeaders: {
-					"my-custom-header": "abcd",
-				},
-			},
-		},
-	});
+const Questions = ({socket}) => {
 
 	const { appUser, setAppUser } = useContext(UserContext);
 	const { isAuthenticated } = useContext(AuthContext);
